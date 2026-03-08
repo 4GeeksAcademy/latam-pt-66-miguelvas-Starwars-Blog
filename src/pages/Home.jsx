@@ -1,16 +1,24 @@
-import rigoImageUrl from "../assets/img/rigo-baby.jpg";
-import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import { Slider } from "../components/Slider";
+
+const URL_BASE = "https://www.swapi.tech/api";
+const URL_PEOPLE = `${URL_BASE}/people`;
+const URL_PLANETS = `${URL_BASE}/planets`;
+const URL_VEHICLES = `${URL_BASE}/vehicles`;
+
 
 export const Home = () => {
 
-  const {store, dispatch} =useGlobalReducer()
-
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
+		<div className="d-flex flex-column justify-content-center align-items-center">
+			<Slider 
+				title = "Characters"
+			/>
+			<Slider 
+				title = "Vehicles"
+			/>
+			<Slider 
+				title = "Planets"
+			/>
 		</div>
 	);
 }; 
