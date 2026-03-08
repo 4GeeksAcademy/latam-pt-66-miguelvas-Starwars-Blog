@@ -11,7 +11,28 @@ body {
     color: white;
 }
 
+h5, button {
+    font-family: 'StarJedi';
+}
+
+
+.navbar {
+    background-color: #000000 !important;
+}
+
 .scroll {
     scrollbar-width: thin;
     scrollbar-color: rgb(232, 216, 216) transparent;
+}
+
+.card {
+    color: white
+}
+
+.card .list-group-item {
+    color: white;
+}
+
+.card ul li {
+    background-color: #1d1e20;
 }

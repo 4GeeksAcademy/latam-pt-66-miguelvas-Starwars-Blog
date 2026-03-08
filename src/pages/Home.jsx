@@ -1,11 +1,5 @@
 import { Slider } from "../components/Slider";
 
-const URL_BASE = "https://www.swapi.tech/api";
-const URL_PEOPLE = `${URL_BASE}/people`;
-const URL_PLANETS = `${URL_BASE}/planets`;
-const URL_VEHICLES = `${URL_BASE}/vehicles`;
-
-
 export const Home = () => {
 
 	return (
@@ -13,9 +7,11 @@ export const Home = () => {
 			<Slider 
 				title = "Characters"
 			/>
+			<hr />
 			<Slider 
-				title = "Vehicles"
+				title = "vehicles"
 			/>
+			<hr />
 			<Slider 
 				title = "Planets"
 			/>
