@@ -1,7 +1,6 @@
 const URL_BASE = "https://www.swapi.tech/api";
 const URL_BASE_IMG ="https://akabab.github.io/starwars-api/api/all.json"
 
-// generic fetcher for a single resource; returns data.result.properties
 export const getResource = async (type, uid) => {
     const url = `${URL_BASE}/${type}/${uid}`;
     try {

@@ -37,7 +37,6 @@ export const Single = () => {
 
   if (!item) return <div className="container text-center"><h1>Not found! (type: {type}, id: {uid})</h1></div>;
 
-  // pick which fields to display depending on the resource type
   const commonKeys = [];
   if (type === "people") {
     commonKeys.push('height','mass','hair_color','skin_color','birth_year');
