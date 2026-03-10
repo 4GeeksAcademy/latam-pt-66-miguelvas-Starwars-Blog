@@ -8,61 +8,36 @@ export const Home = () => {
     const [planets, setPlanets] = useState([]);
     const [loading, setLoading] = useState(true);
 
-
-    // ASI LO TENIA, POR SEPARADO 
-    // useEffect(() => {         
-    //     const fetchPeople = async () => {
-    //         setLoading(true);
-    //         const peopleData = await getPeople(1,10);
-    //         setPeople(peopleData);
-    //         setLoading(false);
-    //     };
-    //     fetchPeople();
-    // }, []);
-
-    // useEffect(() => {
-    //     const fetchVehicles = async () => {
-    //         setLoading(true);
-    //         const vehicleData = await getVehicles(1,10);
-    //         setVehicles(vehicleData);
-    //         setLoading(false)
-    //     };
-    //     fetchVehicles();
-    // }, [])
-
-    // useEffect(() => {
-    //     const fetchPlanets = async () => {
-    //         setLoading(true);
-    //         const planetsData = await getPlanets(1,10);
-    //         setPlanets(planetsData);
-    //         setLoading(false);
-    //     };
-    //     fetchPlanets();
-    // }, []);
-
-
-    // ASI LO HE UNIFICADO, PARA QUE SE EJECUTE TODO JUNTO Y NO POR SEPARADO, ASI SE OPTIMIZA EL RENDIMIENTO Y SE REDUCE EL TIEMPO DE CARGA
-    useEffect(() => {
-        const fetchData = async () => {
+    useEffect(() => {         
+        const fetchPeople = async () => {
             setLoading(true);
-            try {
-                const [peopleData, vehiclesData, planetsData] = await Promise.all(
-                    [getPeople(1, 10), getVehicles(1, 10), getPlanets(1, 10)]);
-                    setPeople(peopleData);
-                    setVehicles(vehiclesData);
-                    setPlanets(planetsData);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            } finally {
-                setLoading(false);
-            }
+            const peopleData = await getPeople(1,10);
+            setPeople(peopleData);
+            setLoading(false);
         };
-        fetchData();
+        fetchPeople();
     }, []);
 
     useEffect(() => {
-        
+        const fetchVehicles = async () => {
+            setLoading(true);
+            const vehicleData = await getVehicles(1,10);
+            setVehicles(vehicleData);
+            setLoading(false)
+        };
+        fetchVehicles();
+    }, [])
+
+    useEffect(() => {
+        const fetchPlanets = async () => {
+            setLoading(true);
+            const planetsData = await getPlanets(1,10);
+            setPlanets(planetsData);
+            setLoading(false);
+        };
+        fetchPlanets();
     }, []);
+
 
     if (loading) {
         return (
