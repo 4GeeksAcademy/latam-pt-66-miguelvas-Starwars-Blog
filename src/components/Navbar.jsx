@@ -27,10 +27,19 @@ export const Navbar = () => {
                                 <li><span className="dropdown-item">No favorites yet</span></li>
                             ) : (
                                 store.favorites.map((fav) => (
-                                    <li key={fav.uid}>
-                                        <Link className="dropdown-item" to={`/single/${fav.type}/${fav.uid}`}>
+                                    <li key={fav.uid} className="dropdown-item d-flex justify-content-between align-items-center">
+                                        <Link className="text-decoration-none text-light" to={`/single/${fav.type}/${fav.uid}`}>
                                             {fav.name}
                                         </Link>
+                                        <button 
+                                            className="btn btn-outline-danger btn-sm ms-3 border-0" 
+                                            onClick={(e) => {
+                                                e.stopPropagation(); 
+                                                dispatch({ type: 'remove_favorite', payload: { uid: fav.uid, type: fav.type } });
+                                            }}
+                                        >
+                                            <i className="fa-solid fa-trash"></i>
+                                        </button>
                                     </li>
                                 ))
                             )}
