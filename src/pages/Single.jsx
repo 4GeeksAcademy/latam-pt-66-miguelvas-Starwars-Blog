@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getResource } from "../services/results.service";
+import { getPerson, getPlanet, getVehicle } from "../services/results.service";
 
 export const Single = () => {
   const { type, uid } = useParams();
@@ -11,10 +11,12 @@ export const Single = () => {
     const fetchData = async () => {
       let data = null;
       try {
-        if (!type) {
-          data = await getResource("people", uid);
-        } else {
-          data = await getResource(type, uid);
+        if (type === "people") {
+          data = await getPerson(uid);
+        } else if (type === "planets") {
+          data = await getPlanet(uid);
+        } else if (type === "vehicles") {
+          data = await getVehicle(uid);
         }
       } catch (err) {
         console.error("error fetching item", err);
@@ -35,11 +37,11 @@ export const Single = () => {
     );
   }
 
-  if (!item) return <div className="container text-center"><h1>Not found! (type: {type}, id: {uid})</h1></div>;
+  if (!item) return <div className="container text-center mt-5"><h1>Not found! (type: {type}, id: {uid})</h1></div>;
 
   const commonKeys = [];
   if (type === "people") {
-    commonKeys.push('height','mass','hair_color','skin_color','birth_year');
+    commonKeys.push('height','mass','hair_color','skin_color','birth_year','gender');
   } else if (type === "planets") {
     commonKeys.push('climate','terrain','population','gravity','orbital_period');
   } else if (type === "vehicles") {
@@ -66,7 +68,7 @@ export const Single = () => {
       </div>
       <hr className="my-4" />
       <Link to="/">
-        <span className="btn btn-warning btn-lg" href="#" role="button">
+        <span className="btn btn-warning btn-lg" role="button">
           Back home
         </span>
       </Link>
